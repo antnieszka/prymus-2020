@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 # http://127.0.0.1:8000/books
+from books.models import Book
 
 
 def index(request):
@@ -9,7 +10,8 @@ def index(request):
     return render(request, "index.html")
 
 def books_list(request):
-    return HttpResponse("hello wrold")
+    context = {"books": Book.objects.all()}
+    return render(request, "book_list.html", context)
 
 
 # class IndexView(TemplateView):
