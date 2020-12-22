@@ -20,10 +20,10 @@ from books.views import books_list, index
 
 urlpatterns = [
     # http://127.0.0.1:8000/
-    path('', index),
+    path('', index, name="index"),
     path('admin/', admin.site.urls),
     # path('hello-world/', ...),
     # http://127.0.0.1:8000/books
-    path('books/', books_list),
+    path('ksiazki/', books_list, name="book_list"),
     # path('authors/', ...),
 ]
