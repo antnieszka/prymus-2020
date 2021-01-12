@@ -21,3 +21,22 @@ def book_details(request, book_id):
 
 # class IndexView(TemplateView):
     # template_name = "index.html"
+
+from django.contrib.auth.forms import UserCreationForm
+
+def user_signup(request):
+    form = None
+    if request.method == "POST":
+        # stwórz użytkownika
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            # formularz poprawny, można zapisać użytkownika
+            form.save()
+            # przekierowanie na stronę z podziękowaniem
+            return render(request, "registration/signup_complete.html")
+    else:
+        # pokaż pusty formularze rejestracji
+        form = UserCreationForm()
+
+    context = {"form": form}
+    return render(request, "registration/signup_form.html", context)

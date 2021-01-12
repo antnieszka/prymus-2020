@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from books.views import books_list, book_details, index
+from books.views import books_list, book_details, index, user_signup
+from django.urls import include
 
 urlpatterns = [
     # http://127.0.0.1:8000/
     path('', index, name="index"),
+    path('uzytkownicy/', include("django.contrib.auth.urls")),
+    path('uzytkownicy/rejestracja/', user_signup),
     path('admin/', admin.site.urls),
     # path('hello-world/', ...),
     # http://127.0.0.1:8000/books
