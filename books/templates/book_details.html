@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1><i class="fas fa-book"></i> {{ book.title }}</h1>
+
+<img src="{{ book.cover.url }}">
+
+<p>
+    {{ book.short_description }}
+</p>
+
+
+{% endblock content %}
